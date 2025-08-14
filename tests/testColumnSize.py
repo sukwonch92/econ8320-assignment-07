@@ -14,11 +14,16 @@ for i in code:
         if "#si-exercise" in j:
             compile("".join(i['source']), '<string>', 'exec')
 
-lego2019 = pd.read_csv("lego2019.csv")
+bags = pd.read_csv("bags.csv")
 
 class testCases(unittest.TestCase):
 
     def testColnames(self):
-      truth = pd.read_csv("tests/files/answer.csv")
+        colnames = list(bags.columns)
+        size = "size" in colnames
+        datatype = bags['size'].dtype=="object"
+        # price = "price" in colnames
+        # brand = "brand" in colnames
+        # size = "size" in colnames
 
-      self.assertTrue(all(truth.columns[i] == lego2019.columns[i] for i in range(len(truth.columns))), "Your dataset does not contain all of the required columns.")
+        self.assertTrue((size & datatype), "Your dataset does not contain all of the required columns.")

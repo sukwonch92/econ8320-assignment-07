@@ -15,10 +15,9 @@ for i in code:
             source = "".join(i['source'])
             compile(source, '<string>', 'exec')
 
-lego2019 = pd.read_csv("lego2019.csv")
-
 class testCases(unittest.TestCase):
 
     def testFunction(self):
 
-      self.assertTrue("def collectLegoSets(" in source, "The `collectLegoSets` function is not defined in your code.")
+      self.assertTrue(re.search(r"bags[ ]*=[ ]*poshmark(", source), 
+                      "The `poshmark` function is not used in your code to create the bags variable.")

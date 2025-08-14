@@ -18,5 +18,12 @@ bags = pd.read_csv("bags.csv")
 
 class testCases(unittest.TestCase):
 
-    def testLength(self):
-      self.assertTrue(bags.shape[0]>=200, "Your data set does not collect at least the first 200 bags from Poshmark.")
+    def testColnames(self):
+        colnames = list(bags.columns)
+        price = "price" in colnames
+        datatype = bags['price'].dtype=="float64"
+        # price = "price" in colnames
+        # brand = "brand" in colnames
+        # size = "size" in colnames
+
+        self.assertTrue((price & datatype), "Your dataset does not contain all of the required columns.")
