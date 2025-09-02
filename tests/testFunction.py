@@ -19,5 +19,5 @@ class testCases(unittest.TestCase):
 
     def testFunction(self):
 
-      self.assertTrue(re.search(r"bags[ ]*=[ ]*poshmark(", source), 
+      self.assertTrue(re.search(r"bags[ ]*=[ ]*poshmark[(]", source), 
                       "The `poshmark` function is not used in your code to create the bags variable.")
